@@ -1,12 +1,12 @@
 exports.seed = function(knex, Promise) {
   return knex("ingredients").insert([
-    { name: "white bread slice" },
-    { name: "wheat bread slice" },
-    { name: "peanut butter" },
-    { name: "jelly" },
-    { name: "ham" },
-    { name: "noodles" },
-    { name: "sliced cheese" },
-    { name: "melty cheese" }
+    { ingredientName: "white bread slice" },
+    { ingredientName: "wheat bread slice" },
+    { ingredientName: "peanut butter" },
+    { ingredientName: "jelly" },
+    { ingredientName: "ham" },
+    { ingredientName: "noodles" },
+    { ingredientName: "sliced cheese" },
+    { ingredientName: "melty cheese" }
   ]);
 };
