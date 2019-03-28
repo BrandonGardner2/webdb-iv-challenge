@@ -20,6 +20,12 @@ async function addDish(dish) {
 
 function getDish(id) {
   return db("dishes")
-    .where({ id })
-    .first();
+    .innerJoin("recipes", "recipes.dish_id", "dishes.id")
+    .select({
+      dish: "dishes.dishName",
+      recipe: "recipes.recipeName",
+      recipe_id: "recipes.id",
+      id: "dishes.id"
+    })
+    .where({ "dishes.id": id });
 }
