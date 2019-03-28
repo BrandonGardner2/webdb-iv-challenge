@@ -7,11 +7,22 @@ module.exports = {
 };
 
 function getRecipes() {
-  //return some db code here
+  return db("recipes")
+    .innerJoin("dishes", "recipes.dish_id", "dishes.id")
+    .select({
+      dish: "dishes.dishName",
+      recipe: "recipes.recipeName",
+      dish_id: "recipes.dish_id",
+      id: "recipes.id"
+    });
 }
 
-function addRecipe(recipe) {
-  //return some db code here
+async function addRecipe(recipe) {
+  const [id] = await db("recipes").insert(recipe);
+
+  return db("recipes")
+    .where({ id })
+    .first();
 }
 
 function getShoppingList(recipe) {

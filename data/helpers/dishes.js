@@ -7,13 +7,19 @@ module.exports = {
 };
 
 function getDishes() {
-  //return some db code here
+  return db("dishes");
 }
 
-function addDish(dish) {
-  //return some db code here
+async function addDish(dish) {
+  const [id] = await db("dishes").insert(dish);
+
+  return db("dishes")
+    .where({ id })
+    .first();
 }
 
 function getDish(id) {
-  //return some db code here
+  return db("dishes")
+    .where({ id })
+    .first();
 }
